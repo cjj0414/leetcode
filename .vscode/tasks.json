@@ -1,0 +1,40 @@
+{
+    "tasks": [
+        {
+            //ctrl+shift+B  to  run this task
+            "type": "shell",
+            "label": "rebuild project",
+            "command": "sh build.sh debug 15",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            //F5 to run this task and debug 
+            "type": "shell",
+            "label": "prep project",
+            "command": "sh build.sh ",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "problemMatcher": []
+        },
+        {
+            //F5 to run this task and debug 
+            "type": "shell",
+            "label": "compile current file",
+            "command": "g++ -ggdb ${fileBasenameNoExtension}.cpp -o ${workspaceFolder}/src/${fileBasenameNoExtension} -std=c++11 &>err.log;grep error: err.log --color=auto",
+            "options": {
+                "cwd": "${workspaceFolder}/src/"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+
+        }
+    ],
+    "version": "2.0.0"
+}
